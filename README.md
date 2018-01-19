@@ -1,3 +1,3 @@
 # MusicScales
 
-Interval löist to scales
+Interval list to scales
