@@ -1,14 +1,10 @@
 package musicscales;
 
 import java.util.Scanner;
-
 /**
  * @author Sakari Angervuori
  */
 public class MainActivity {
-
-    static String intervallit = "";
-    static String intervalli = "";
 
     static String intervalli1;
     static String intervalli2;
@@ -20,6 +16,8 @@ public class MainActivity {
     static String intervalli8;
 
     public static void main(String[] args) {
+        
+        String intervallit = "";
 
         Scanner input = new Scanner(System.in);
         MusicScales scales = new MusicScales();
@@ -35,8 +33,6 @@ public class MainActivity {
         intervalli2 = input.nextLine();
 
         if (intervalli2.equals("*")) {
-
-            //int sizeScales = 13653;
             for (int counter2 = 0; counter2 <= 3; counter2++) {
                 switch (counter2) {
 
@@ -76,7 +72,6 @@ public class MainActivity {
         intervalli3 = input.nextLine();
 
         if (intervalli3.equals("*")) {
-
             int counter3 = 0;
             //int j = MusicIntervals.counter; 
             for (counter3 = 0; counter3 <= 3; counter3++) {
@@ -293,7 +288,7 @@ public class MainActivity {
 
         System.out.println("8. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli8 = input.nextLine();
-        intervalli = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6 + intervalli7;
+        String intervalli = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6 + intervalli7;
 
         if (intervalli8.equals("*")) {
 
@@ -326,17 +321,14 @@ public class MainActivity {
                 x++;
             } while (x <= 8191);
         }
-
         intervalsList.cleanIntervalList();
         intervalsList.myIntervlasClean();
+        intervalsList.myTrueScales();
 
-        for (String t : intervalsList.myIntervalsClean) {
+        for (String t : intervalsList.myIntervalsCleanReduced) {
 
             System.out.println(t + " = " + scales.getScales(t));
 
         }
-        intervalsList.myTrueScales();
-        //System.out.println("Number of items in Array "+ intervalsList.arrayLength);
     }
-
 }

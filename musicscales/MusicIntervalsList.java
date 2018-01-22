@@ -14,6 +14,8 @@ public class MusicIntervalsList {
     // Creating final Array list with no dublicates and strings < 5 char
     public String[] myIntervalsClean;
     
+    public String[] myIntervalsCleanReduced;
+    
     public String[] scale;
 
     public int arrayLength, k;
@@ -61,7 +63,9 @@ public class MusicIntervalsList {
 
     public void myTrueScales() {
 
-        int laskuri = 0;
+        String[] myIntervalsCleanReduced = new String[arrayLength];
+
+        int laskuri = -1;
 
         //puhdistetun taulukon koko, jossa kaikki ovat potentiaalisia skaaloja
         //tarkistetaan kaikki potentiuaaliset skaalat
@@ -69,12 +73,12 @@ public class MusicIntervalsList {
 
             String scale = scales.getScales(myIntervalsClean[n]);
 
-    
-            System.out.println("null lukumäärä " + scale);
-           
-
+            if (scale != null) {
+                laskuri = laskuri + 1;
+                myIntervalsCleanReduced[laskuri] = myIntervalsClean[n];
+            }
         }
-
+        myIntervalsCleanReduced = Arrays.copyOf(myIntervalsCleanReduced, laskuri + 1);
+        this.myIntervalsCleanReduced = myIntervalsCleanReduced;
     }
-
 }
