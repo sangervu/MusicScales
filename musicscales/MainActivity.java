@@ -330,5 +330,13 @@ public class MainActivity {
             System.out.println(t + " = " + scales.getScales(t));
 
         }
+        
+        
+           for (String t : intervalsList.myIntervalsClean) {
+
+            System.out.println(t + " = " + scales.getScales(t));
+
+        }
+        
     }
 }
