@@ -24,7 +24,6 @@ public class MainActivity {
         MusicScales scales = new MusicScales();
 
         MusicIntervals intervals = new MusicIntervals();
-        //MusicIntervalsCleaner intervalsClean = new MusicIntervalsCleaner();
 
         System.out.println("1. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli1 = input.nextLine();
@@ -64,8 +63,6 @@ public class MainActivity {
             } while (x <= 3);
         }
 
-        //intervals.setInterval(intervalli1);
-        //intervalsList.setIntervalList(intervalli1);
         System.out.println("2. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli2 = input.nextLine();
 
@@ -360,13 +357,11 @@ public class MainActivity {
                     intervals.setInterval(intervallit);
                 }
             }
-
         }
 
         intervals.myTrueScales();
         intervals.cleanInterval();
 
-        //System.out.println(intervals.myIntervalsList);
         for (String t : intervals.myIntervalsCleaned) {
 
             System.out.println(t + " = " + scales.getScales(t));

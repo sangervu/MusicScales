@@ -38,7 +38,7 @@ public class MusicIntervals {
 
             String scale = scales.getScales(myIntervals[n]);
 
-            if (scale != null && myIntervals[n] != myIntervals[n+1]) {
+            if (scale != null) {
                 laskuri = laskuri + 1;
                 myIntervalsCleaned[laskuri] = myIntervals[n];
             }
