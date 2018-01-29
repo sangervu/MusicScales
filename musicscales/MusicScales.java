@@ -1,4 +1,4 @@
-package musicscales;
+package musicscalesnew;
 
 import java.util.HashMap;
 
@@ -59,4 +59,3 @@ public class MusicScales {
 
     }
 }
-    

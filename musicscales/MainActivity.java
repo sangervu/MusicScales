@@ -1,6 +1,7 @@
-package musicscales;
+package musicscalesnew;
 
 import java.util.Scanner;
+
 /**
  * @author Sakari Angervuori
  */
@@ -16,51 +17,46 @@ public class MainActivity {
     static String intervalli8;
 
     public static void main(String[] args) {
-        
+
         String intervallit = "";
 
         Scanner input = new Scanner(System.in);
         MusicScales scales = new MusicScales();
+
         MusicIntervals intervals = new MusicIntervals();
-        MusicIntervalsList intervalsList = new MusicIntervalsList();
+        //MusicIntervalsCleaner intervalsClean = new MusicIntervalsCleaner();
 
-        System.out.println("1. intervalli: H (half), W (whole), m (minor), M (major)");
+        System.out.println("1. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli1 = input.nextLine();
-        intervals.setInterval(intervalli1);
-        intervalsList.setIntervalList(intervalli1);
 
-        System.out.println("2. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
-        intervalli2 = input.nextLine();
-
-        if (intervalli2.equals("*")) {
-            for (int counter2 = 0; counter2 <= 3; counter2++) {
-                switch (counter2) {
+        if (intervalli1.equals("*")) {
+            for (int counter1 = 0; counter1 <= 3; counter1++) {
+                switch (counter1) {
 
                     case 0:
-                        intervallit = intervalli1 + "H";
+                        intervallit = "H";
                         intervals.setInterval(intervallit);
-                        intervalsList.setIntervalList(intervallit);
                         break;
                     case 1:
-                        intervallit = intervalli1 + "W";
+                        intervallit = "W";
                         intervals.setInterval(intervallit);
-                        intervalsList.setIntervalList(intervallit);
+
                         break;
                     case 2:
-                        intervallit = intervalli1 + "m";
+                        intervallit = "m";
                         intervals.setInterval(intervallit);
-                        intervalsList.setIntervalList(intervallit);
+
                         break;
                     case 3:
-                        intervallit = intervalli1 + "M";
+                        intervallit = "M";
                         intervals.setInterval(intervallit);
-                        intervalsList.setIntervalList(intervallit);
+
                         break;
                 }
             }
         } else {
-            intervallit = intervalli1 + intervalli2;
-            intervalsList.setIntervalList(intervallit);
+            intervallit = intervalli1;
+
             int x = 0;
             do {
                 intervals.setInterval(intervallit);
@@ -68,49 +64,94 @@ public class MainActivity {
             } while (x <= 3);
         }
 
+        //intervals.setInterval(intervalli1);
+        //intervalsList.setIntervalList(intervalli1);
+        System.out.println("2. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
+        intervalli2 = input.nextLine();
+
+        if (intervalli2.equals("*")) {
+            for (int counter2 = 0; counter2 <= 3; counter2++) {
+
+                for (int i = 0; i <= 3; i++) {
+                    switch (counter2) {
+
+                        case 0:
+                            intervallit = intervals.myIntervals[i] + "H";
+                            intervals.setInterval(intervallit);
+
+                            break;
+                        case 1:
+                            intervallit = intervals.myIntervals[i] + "W";
+                            intervals.setInterval(intervallit);
+
+                            break;
+                        case 2:
+                            intervallit = intervals.myIntervals[i] + "m";
+                            intervals.setInterval(intervallit);
+
+                            break;
+                        case 3:
+                            intervallit = intervals.myIntervals[i] + "M";
+                            intervals.setInterval(intervallit);
+
+                            break;
+                    }
+                }
+            }
+        } else {
+
+            for (int counter2 = 0; counter2 <= 3; counter2++) {
+                for (int i = 0; i <= 3; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli2;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
+        }
+
         System.out.println("3. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli3 = input.nextLine();
 
         if (intervalli3.equals("*")) {
             int counter3 = 0;
-            //int j = MusicIntervals.counter; 
+            //int j = intervals.counter; 
             for (counter3 = 0; counter3 <= 3; counter3++) {
 
-                for (int i = 1; i <= 4; i++) {
+                for (int i = 4; i <= 19; i++) {
                     switch (counter3) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 2:
-                            intervallit = MusicIntervals.myIntervals[i] + "m";
+                            intervallit = intervals.myIntervals[i] + "m";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 3:
-                            intervallit = MusicIntervals.myIntervals[i] + "M";
+                            intervallit = intervals.myIntervals[i] + "M";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
 
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 15);
+            for (int counter3 = 0; counter3 <= 3; counter3++) {
+                for (int i = 4; i <= 19; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli3;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
         }
 
         System.out.println("4. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
@@ -120,40 +161,40 @@ public class MainActivity {
             int counter4 = 0;
             for (counter4 = 0; counter4 <= 3; counter4++) {
 
-                for (int i = 5; i <= 20; i++) {
+                for (int i = 20; i <= 83; i++) {
                     switch (counter4) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 2:
-                            intervallit = MusicIntervals.myIntervals[i] + "m";
+                            intervallit = intervals.myIntervals[i] + "m";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 3:
-                            intervallit = MusicIntervals.myIntervals[i] + "M";
+                            intervallit = intervals.myIntervals[i] + "M";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3 + intervalli4;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 63);
+            for (int counter4 = 0; counter4 <= 3; counter4++) {
+                for (int i = 20; i <= 83; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli4;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
         }
 
         System.out.println("5. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
@@ -163,40 +204,40 @@ public class MainActivity {
             int counter5 = 0;
             for (counter5 = 0; counter5 <= 3; counter5++) {
 
-                for (int i = 21; i <= 84; i++) {
+                for (int i = 84; i <= 339; i++) {
                     switch (counter5) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 2:
-                            intervallit = MusicIntervals.myIntervals[i] + "m";
+                            intervallit = intervals.myIntervals[i] + "m";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 3:
-                            intervallit = MusicIntervals.myIntervals[i] + "M";
+                            intervallit = intervals.myIntervals[i] + "M";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 255);
+            for (int counter5 = 0; counter5 <= 3; counter5++) {
+                for (int i = 84; i <= 339; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli5;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
         }
 
         System.out.println("6. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
@@ -206,40 +247,40 @@ public class MainActivity {
             int counter6 = 0;
             for (counter6 = 0; counter6 <= 3; counter6++) {
 
-                for (int i = 85; i <= 340; i++) {
+                for (int i = 340; i <= 1363; i++) {
                     switch (counter6) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 2:
-                            intervallit = MusicIntervals.myIntervals[i] + "m";
+                            intervallit = intervals.myIntervals[i] + "m";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 3:
-                            intervallit = MusicIntervals.myIntervals[i] + "M";
+                            intervallit = intervals.myIntervals[i] + "M";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 1023);
+            for (int counter6 = 0; counter6 <= 3; counter6++) {
+                for (int i = 340; i <= 1363; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli6;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
         }
 
         System.out.println("7. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
@@ -250,93 +291,86 @@ public class MainActivity {
             int counter7 = 0;
             for (counter7 = 0; counter7 <= 3; counter7++) {
 
-                for (int i = 341; i <= 1364; i++) {
+                for (int i = 1364; i <= 5459; i++) {
                     switch (counter7) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 2:
-                            intervallit = MusicIntervals.myIntervals[i] + "m";
+                            intervallit = intervals.myIntervals[i] + "m";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 3:
-                            intervallit = MusicIntervals.myIntervals[i] + "M";
+                            intervallit = intervals.myIntervals[i] + "M";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6 + intervalli7;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 4095);
+            for (int counter7 = 0; counter7 <= 3; counter7++) {
+                for (int i = 1364; i <= 5459; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli7;
+                    intervals.setInterval(intervallit);
+
+                }
+            }
         }
 
         System.out.println("8. intervalli: H (half), W (whole), m (minor), M (major), * (wild card)");
         intervalli8 = input.nextLine();
-        String intervalli = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6 + intervalli7;
 
         if (intervalli8.equals("*")) {
 
             int counter8 = 0;
             for (counter8 = 0; counter8 <= 1; counter8++) {
 
-                for (int i = 1365; i <= 5460; i++) {
+                for (int i = 5460; i <= 21843; i++) {
                     switch (counter8) {
 
                         case 0:
-                            intervallit = MusicIntervals.myIntervals[i] + "H";
+                            intervallit = intervals.myIntervals[i] + "H";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                         case 1:
-                            intervallit = MusicIntervals.myIntervals[i] + "W";
+                            intervallit = intervals.myIntervals[i] + "W";
                             intervals.setInterval(intervallit);
-                            intervalsList.setIntervalList(intervallit);
+
                             break;
                     }
                 }
             }
 
         } else {
-            intervallit = intervalli1 + intervalli2 + intervalli3 + intervalli4 + intervalli5 + intervalli6 + intervalli7 + intervalli8;
-            intervalsList.setIntervalList(intervallit);
-            int x = 0;
-            do {
-                intervals.setInterval(intervallit);
-                x++;
-            } while (x <= 8191);
-        }
-        intervalsList.cleanIntervalList();
-        intervalsList.myIntervlasClean();
-        intervalsList.myTrueScales();
 
-        for (String t : intervalsList.myIntervalsCleanReduced) {
+            for (int counter8 = 0; counter8 <= 1; counter8++) {
+                for (int i = 5460; i <= 21843; i++) {
+                    intervallit = intervals.myIntervals[i] + intervalli8;
+                    intervals.setInterval(intervallit);
+                }
+            }
+
+        }
+
+        intervals.myTrueScales();
+        intervals.cleanInterval();
+
+        //System.out.println(intervals.myIntervalsList);
+        for (String t : intervals.myIntervalsCleaned) {
 
             System.out.println(t + " = " + scales.getScales(t));
 
         }
-        
-        
-           for (String t : intervalsList.myIntervalsClean) {
-
-            System.out.println(t + " = " + scales.getScales(t));
-
-        }
-        
     }
 }
