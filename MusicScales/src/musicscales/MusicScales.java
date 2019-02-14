@@ -9,8 +9,6 @@ public class MusicScales {
         HashMap<String, String> points = new HashMap<String, String>();
        
         points.put("WHmHHmH", "Algerian scale");
-        points.put("WWHWHHH", "Bebop dominant scale");
-        points.put("mWWHHmH", "Blues scale");
         points.put("HHHHHHHH", "Chromatic scale");
         points.put("HmHWHmH", "Double harmonic scale");
         points.put("HmWWWHH", "Enigmatic scale");
@@ -75,6 +73,14 @@ public class MusicScales {
         points.put("WWHmHWH", "Ionian #5 hm scale");
         points.put("HWWHmHW", "Locrian #6 hm scale");
         points.put("WHWWHmH", "Harmonic minor scale (hm)");
+        
+        //Jazz scales
+        points.put("mWWHHmH", "Blues scale");
+        points.put("WWHWHHH", "Bebop dominant scale");
+        points.put("mWWHHmH", "Blues scale");
+        
+        //Scales used by Chopin
+        points.put("WHmHHWW", "Gypsy scale[a]");
                
         return points.get(asteikko);
 
